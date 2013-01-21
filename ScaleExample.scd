@@ -1,9 +1,28 @@
+var pentatonics;
+var midinotes;
+var midiroot;
+
 s.boot;
 
-a = Scale.major;
-a.degrees;        // [ 0, 2, 4, 5, 7, 9, 11 ]
-a.semitones;        // [ 0, 2, 4, 5, 7, 9, 11 ]
-a.cents;        // [ 0, 200, 300, 500, 700, 900, 1100 ]
-a.ratios;        // [ 1, 1.1224620483089, 1.2599210498937, 1.3348398541685, etc. ]
+pentatonics = [0, 3, 5, 7, 10, 12, 15, 17, 19, 21, 24];
+pentatonics.postln;
+midinotes = Array.new(16);
+midiroot = 60;
+// Test the notes in order:
+//pentatonics.size.do({
+//	arg i;
+//	midinotes.add((midiroot + pentatonics.at(i)));
+//});
+15.do({
+	arg i;
+	midinotes.add(midiroot + pentatonics.at((pentatonics.size - 1).rand));
+});
 
-Pbind(\scale, a, \degree, Pseq((0..7) ++ (6..0) ++ [\rest], 1), \dur, 0.25).play;
+// Use an E root note instead of a C.
+//midiroot = 64;
+//pentatonics.size.do({
+//	arg i;
+//	midinotes.add((midiroot + pentatonics.at(i)));
+//});
+
+Pbind(\midinote, Pseq(midinotes, 1)).play;
