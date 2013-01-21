@@ -30,6 +30,22 @@ public class SoundGene {
         }
     }
     
+    public SoundGene(SoundGene parents[])
+    {
+        this.oscP5 = parents[0].oscP5;
+        this.remote = parents[0].remote;
+        
+        notes = new int[NOTES];
+        int p = 0;
+        for(int ct=0;ct<NOTES;ct++)
+        {
+            if(Math.random() < cross_prob)
+                p++;
+            
+            notes[ct] = parents[p%parents.length].notes[ct];
+        }
+    }
+    
     public void play()
     {
         for(int note:notes)
@@ -59,7 +75,7 @@ public class SoundGene {
     
     int notes[];
     static int lowest = 45, highest = 120, NOTES = 4;
-    double rest_prob = .05;
+    double rest_prob = .05, cross_prob = .1;
     OscP5 oscP5;
     NetAddress remote;
 }
