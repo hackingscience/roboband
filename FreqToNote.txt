@@ -1,0 +1,6 @@
+  var inFreq, outNote
+	if (inFreq > 80 && inFreq < 100) then 1  /E
+	if 100 to 120 then 2   /A
+	if 120 to 160 then 3   /B
+	if 125 to 135  then 4 /C
+	
