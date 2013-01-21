@@ -1,3 +1,1 @@
-The backend makes extensive use of JCollider, a SuperCollider-Java interface.
-
-http://www.sciss.de/jcollider/
+JCollider is a pain to use, using oscp5 instead...
